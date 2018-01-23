@@ -1,9 +1,3 @@
-# if(!file.exists("."))
-# {
-	# dir.create(".")
-# }
-# fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-# download.file(fileUrl,destfile="./dataset.zip")
 
 features<-read.table("./UCI HAR Dataset/features.txt",sep=" ")
 label<-gsub(" ", "", features[,2]) # remove spaces
@@ -23,7 +17,7 @@ testFiles<-testFiles[grep("\\.txt$",testFiles,perl=TRUE)]
 trainFiles<-trainFiles[grep("\\.txt$",trainFiles,perl=TRUE)]
 
 ## load all the files needed for merging
-load_subject_activity_data<-function(path_to_files,file_names,column_names){
+merge_subject_activity_data<-function(path_to_files,file_names,column_names){
 	path<-path_to_files
 	testFiles <- file_names
 	fileName<-paste(path,testFiles[1],sep="")
@@ -39,8 +33,8 @@ load_subject_activity_data<-function(path_to_files,file_names,column_names){
 	merged_data<-cbind(test1,test3,test2)
 	return(merged_data)
 }
-test <- load_subject_activity_data(testPath,testFiles,label)
-train <- load_subject_activity_data(trainPath,trainFiles,label)
+test <- merge_subject_activity_data(testPath,testFiles,label)
+train <- merge_subject_activity_data(trainPath,trainFiles,label)
 
 data1 <- rbind(test,train)
 
@@ -54,6 +48,7 @@ library(dplyr)
 data3<-data2 %>% group_by(subject,activity) %>% summarise_each(funs(mean))
 
 data3<-data.frame(data3)
+write.table(data3,"subject_activity_mean.txt",row.name=FALSE)
 
 
 
