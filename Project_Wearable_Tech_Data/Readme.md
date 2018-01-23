@@ -1,7 +1,6 @@
-# run_analysis.R
+# Getting and Cleaning Data Course Project ( Coursera )
 
-Data preparation tool for the UCI HAR Dataset.
-
+The purpose of this project is to demonstrate the student's ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
 
 ## Getting Started
 
@@ -15,24 +14,32 @@ The following packages for R were used:
 dplyr Package
 ```
 
-## Running the Script
+```
+[UCI HAR Dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+```
 
-UCI HAR Dataset
+## What the script does
 
-R Package "dplyr"
+1. Merges the training and the test sets to create one data set.
 
-Tested with R version 3.4.2 (2017-09-28)
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
 
-platform       x86_64-w64-mingw32   
-       
-arch           x86_64         
-             
-os             mingw32        
-             
-system         x86_64, mingw32 
-                                                       
-svn rev        73368       
+3. Uses descriptive activity names to name the activities in the data set
 
-## Data    
+4. Appropriately labels the data set with descriptive variable names.
+
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+## Running the script 
+
+Place the run_analysis.R scipt in the same directory as the UCI HAR Dataset Folder. A .txt file called subject_activity_mean.txt will be created.
+
+## What the code does
+
+1) The run_analysis.R script starts by loading the following files inside the folder UCI HAR Dataset.
+* features.txt
+* activity_labels.txt
+* ./test
+ 
 
 
