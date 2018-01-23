@@ -1,6 +1,6 @@
-# run_analysis.R
+## run_analysis.R
 
-Data preparation script for the wearable tech dataset.
+# Data preparation script for the wearable tech dataset.
 
 Requirements: 
 UCI HAR Dataset
